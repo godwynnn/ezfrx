@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Martian+Mono:wght@100..800&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Jersey+20+Charted&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Oswald:wght@200..700&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components{
+  .bg_default{
+    @apply bg-[#101720] lg:w-full lg:h-[100vh] md:h-[100vh] md:w-full sm:h-[100vh] sm:w-full max-sm:h-[100vh] max-sm:w-full
+  }
+  /* .modebar{
+    @apply grid grid-cols-6
+  } */
+  .social_icons{
+    @apply border-slate-300 border-2 p-2 rounded-md
+  }
+
+  
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.header{
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(/img21.jpg);
+  scale: 1;
+  transition: 0.8s ;
+  transition-timing-function: linear;
+
+ 
+}
+.header section:first-child{
+  /* background-color: ; */
+  background: linear-gradient(to right, #101720 58%,transparent);
+
+  opacity: 92%;
+  border: none;
+  
+}
+.navbar_header{
+  position:  absolute;
+  top: 0;
+  left: 0;
+  /* background-color: white; */
+  z-index: 1000;
+
+}
+.grow{
+  background-color: transparent;
+}
+.btn_active{
+  color: white;
+}
+.btn_selector{
+  transition: 0.8s ease;
+}
+.auth_holder{
+  overflow: hidden;
+}
+.auth_holder form{
+  position: absolute;
+  top: 15%;
+  transition: 0.8s ease;
+  /* border: 1px solid red; */
+  
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #3d3c3c;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  /* width: 2%; */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.header_caption{
+  font-family: 'Bebas Neue';
+  /* font-family: 'EB Garamond'; */
+  /* font-family: 'Martian Mono'; */
+  font-family: "Oswald", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
+  /* font-family: 'Martian Mono'; */
+  /* font-weight: 700; */
+  font-style: normal;
+  /* font-style: italic; */
+}
+/* .modebar{
+  background-color: red;
+  width: 100%;
+} */
+
+.wave2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+
+.wave2 svg {
+  position: relative;
+  display: block;
+  width: calc(184% + 1.3px);
+  height: 348px;
+ 
+
+}
+
+.wave2 .shape-fill {
+  fill: #101720;
+}
+
+.wave1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+
+}
+
+.wave1 svg {
+  position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 81px;
+}
+
+.wave1 .shape-fill {
+  fill: #0B1215;
+}
+.feature{
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  position: relative;
+  cursor: pointer;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+  font-family: "Kanit", sans-serif;
+  border: 5px solid #101720;
+  border-radius: 20px;
+  /* border: 1px solid red; */
+}
+section{
+  font-family: 'Bebas Neue';
+  font-family: "Kanit", sans-serif;
+  font-style: normal;
+}
+.desc{
+  font-weight: lighter;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+
+/* .feature::before{
+  content: "";
+
+  height: 0;
+  transition: 0.8s ease;
+}
+  
+.feature:hover::before{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 90%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -0.5;
+ 
+
+}
+.feature:hover p{
+  color: white;
+  z-index: 999999;
+  
+} */
+
+/* CLOUDINARY */
+.widget.upload_pop{
+  z-index: 999999;
+}
+
+/* SWIPER STYLES */
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+.swiper-slide:nth-child(1){
+  background-image: url(/img21.jpg);
+ 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.swiper-slide:nth-child(2){
+  background-image: url(/img22.jpg);
+ 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.swiper-slide:nth-child(3){
+  background-image: url(/img23.jpg);
+ 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+.section_1{
+  /* background-image: url(/header.png); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* border: 1px solid red; */
+}
+.section_2 div:first-child{
+  /* border: 1px solid red; */
+}
+.section_2 div:last-child{
+  /* border: 1px solid red; */
+  /* background-color: aliceblue; */
+  padding: 2%;
+  /* background-image: url(/img24.jpg); */
+  /* background: whitesmoke; */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+  /* align-self:flex-end; */
+  
+}
+.section_2 div:last-child img{
+  border: 10px solid white;
+}
+
+.bg_default{
+  background: url(/img28.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* .apexcharts-yaxis{
+  color: red;
+} */
+
+.t_c{
+  margin-top: 10px;
+  background-color: transparent;
+}

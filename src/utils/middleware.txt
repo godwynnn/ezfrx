@@ -1,0 +1,64 @@
+
+// import { NextResponse, NextRequest } from "next/server";
+// import { useSelector } from "react-redux";
+
+
+// const protectedRoutes = [
+
+//     '/dashboard',
+//     '/packages',
+//     // '/packages/[id]'
+// ]
+
+
+
+// // const authData= useSelector(state=>state.reducer.authreducer)
+// const is_logged_in = true
+
+
+// function middleware(request) {
+//     console.log('authdata in side middleware', is_logged_in)
+//     // console.log(request.nextUrl.pathname)
+//     console.log('url name',request.nextUrl.pathname)
+//     if (is_logged_in) {
+//         if( protectedRoutes.includes(request.nextUrl.pathname)){
+//             // console.log('url name',request.nextUrl.pathname)
+//             let absoluteUrl = new URL(`${request.nextUrl.pathname}`, request.nextUrl.origin)
+            
+
+//             // console.log('authdata in side middleware', is_logged_in)
+//             // const requestHeaders = new Headers(request.headers);
+//             // console.log('headers',NextResponse.next())
+//             return NextResponse.redirect(absoluteUrl.toString())
+
+//         }
+            
+
+//     }
+
+     
+//             // let successurl = new URL(`${request.nextUrl.pathname}`, request.nextUrl.origin)
+//             // console.log('hello',successurl.toString())
+    
+//             // return NextResponse.redirect(successurl.toString())
+        
+        
+
+// }
+// export default middleware
+
+// export const config = {
+//     matcher: [
+//         '/',
+//         '/dashboard',
+//         '/packages',
+//         '/packages/:path*',
+      
+
+//     ]
+
+// }
+
+function middleware(request) {}
+
+export default middleware

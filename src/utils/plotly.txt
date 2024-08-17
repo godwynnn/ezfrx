@@ -1,0 +1,58 @@
+<Plot
+                className={'p-0  m-0 lg:w-[100%] lg:h-[100%] max-lg:w-[100%] max-lg:h-[100%] md:w-[100%] '}
+                data={[
+                    {
+                        x: date,
+
+
+                        open: open_data,
+                        close: close_data,
+                        high: high_data,
+                        low: low_data,
+                        type: 'candlestick',
+                        mode: 'lines',
+
+                        // marker: { color: 'white' },
+                        increasing: { line: { color: '#1654B0' } },
+                        decreasing: { line: { color: '#BD0C0C' } },
+                        // name: 'AAPL'
+
+                    },
+
+                    {
+                        x: date,
+
+
+                        y: high_data,
+                        mode: 'lines',
+                        // type: 'scatter',
+                        // name: 'Scatter',
+                        // marker: { color: 'grey' },
+                        // increasing: { line: { color: 'yellow' } },
+                        // decreasing: { line: { color: 'red' } },
+                        // name: 'AAPL Low',
+
+                    },
+
+                ]}
+                layout={{
+                    title: '',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    paper_bgcolor: '#0B1215',
+
+                    // dragmode: 'zoom', // Enable zooming without range slider
+                    xaxis: {
+                        rangeslider: { visible: false } // Disable range slider
+                    },
+                    dragmode: 'pan',
+                    margin: {
+                        r: 0,
+                        t: 0,
+                        b: 40,
+                        l: 60
+                    },
+                    showlegend: false, 
+                    modebar:{
+                        orientation:'v'
+                    }
+                }} />

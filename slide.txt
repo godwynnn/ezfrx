@@ -1,0 +1,29 @@
+<section className="h-full absolute top-0 z-50 left-0 max-lg:w-[100%] lg:w-[100%] max-md:w-[40%] md:w-[100%] sm:w-[100%] max-sm:w-[100%] text-white flex flex-col justify-center lg:p-[5%] md:p-[10%] header_caption "  >
+           
+           
+            <div className="lg:w-[60%] md:w-[100%] sm:w-[100%] max-sm:w-[100%] h-[100%] flex flex-col justify-center ">
+              <ReactTyped
+                // startWhenVisible
+                className=" lg:text-[55px] md:text-[40px] sm:text-[40px] max-sm:text-[30px] max-sm:text-center font-[400] text-gray-200  lg:text-left md:text-left sm:text-center"
+                id="header_text"
+                strings={[
+                  "<p>Begin your journey to financial freedom with <span className=text-white font-[700]>EZFRX</span> </p>",
+                  "<p>Join the fastest growing global trading platform</p>",
+                  "<p>Our story is simple <br> <small>WE EMPOWER PEOPLE</small> </p>",
+                ]}
+                typeSpeed={40}
+                startDelay={1000}
+                backDelay={500}
+                backSpeed={40}
+                smartBackspace={true}
+                loop={true}
+                cursorChar=" "
+              />
+
+            </div>
+
+
+            {/* <p className="text-[15px] font-thin">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, dignissimos.</p> */}
+            {/* <p className="text-[15px]">Gain a competitive edge with our cutting-edge trading signals designed to guide you towards success in the currency markets.</p> */}
+
+          </section>

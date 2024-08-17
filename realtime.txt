@@ -1,0 +1,103 @@
+ if (all_data !== '[]') {
+
+      var lastClose = all_data[all_data.length - 1];
+      var lastIndex = all_data.length - 1;
+
+      var targetIndex = lastIndex + 105 + Math.round(Math.random() + 30);
+
+      var targetPrice = getRandomPrice();
+      console.log('Realtime ', targetPrice)
+
+      var currentIndex = lastIndex + 1;
+      var currentBusinessDay = { day: d.getDate(), month: d.getMonth(), year: d.getFullYear() };
+      var ticksInCurrentBar = 0;
+      var currentBar = {
+        open: null,
+        high: null,
+        low: null,
+        close: null,
+        time: currentBusinessDay,
+      };
+
+      // function mergeTickToBar(price) {
+      //   if (currentBar.open === null) {
+      //     currentBar.open = price;
+      //     currentBar.high = price;
+      //     currentBar.low = price;
+      //     currentBar.close = price;
+      //   } else {
+      //     currentBar.close = price;
+      //     currentBar.high = Math.max(currentBar.high, price);
+      //     currentBar.low = Math.min(currentBar.low, price);
+      //   }
+      //   candlestickSeries.update(currentBar);
+      // }
+
+      // function reset() {
+      //   candlestickSeries.setData(data);
+      //   lastClose = data[data.length - 1].close;
+      //   lastIndex = data.length - 1;
+
+      //   targetIndex = lastIndex + 5 + Math.round(Math.random() + 30);
+      //   targetPrice = getRandomPrice();
+
+      //   currentIndex = lastIndex + 1;
+      //   currentBusinessDay = { day: d.getDate(), month: d.getMonth(), year: d.getFullYear()  };
+      //   ticksInCurrentBar = 0;
+      // }
+
+      function getRandomPrice() {
+        return 10 + Math.round(Math.random() * 10000) / 100;
+      }
+
+      // function nextBusinessDay(time) {
+      //   var d = new Date();
+      //   d.setUTCFullYear(time.year);
+      //   d.setUTCMonth(time.month - 1);
+      //   d.setUTCDate(time.day + 1);
+      //   d.setUTCHours(0, 0, 0, 0);
+      //   return {
+      //     year: d.getUTCFullYear(),
+      //     month: d.getUTCMonth() + 1,
+      //     day: d.getUTCDate(),
+      //   };
+      // }
+
+      // setInterval(function () {
+      //   var deltaY = targetPrice - lastClose;
+      //   var deltaX = targetIndex - lastIndex;
+      //   var angle = deltaY / deltaX;
+      //   var basePrice = lastClose + (currentIndex - lastIndex) * angle;
+      //   var noise = (0.1 - Math.random() * 0.1) + 1.0;
+      //   var noisedPrice = basePrice * noise;
+      //   mergeTickToBar(noisedPrice);
+      //   if (++ticksInCurrentBar === 5) {
+      //     // move to next bar
+      //     currentIndex++;
+      //     currentBusinessDay = nextBusinessDay(currentBusinessDay);
+      //     currentBar = {
+      //       open: null,
+      //       high: null,
+      //       low: null,
+      //       close: null,
+      //       time: currentBusinessDay,
+      //     };
+      //     ticksInCurrentBar = 0;
+      //     if (currentIndex === 5000) {
+      //       reset();
+      //       return;
+      //     }
+      //     if (currentIndex === targetIndex) {
+      //       // change trend
+      //       lastClose = noisedPrice;
+      //       lastIndex = currentIndex;
+      //       targetIndex = lastIndex + 5 + Math.round(Math.random() + 30);
+      //       targetPrice = getRandomPrice();
+      //     }
+      //   }
+      // }, 200);
+
+
+    }else{
+      return
+    }
