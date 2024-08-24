@@ -32,7 +32,7 @@ function Navbar() {
         <div className="navbar navbar_header text-white  justify-between p-4 pl-[5%] pr-[5%]">
 
             <div className="navbar-left lg:w-[10%] md:w-[20%] sm:w-[20%]  max-sm:w-[30%] h-[10vh]">
-                <Image src={require('../../assets/logo.webp')} className='w-[100%] ' />
+                <Image src={require('../../assets/logo.png')} className='w-[100%] ' />
             </div>
 
 

@@ -64,7 +64,7 @@ function Navbar() {
             <Toaster position="top-right" expand={true} richColors />
 
             <div className="navbar-left lg:w-[10%] md:w-[20%] sm:w-[20%]  max-sm:w-[30%] h-[10vh]">
-                <Image src={require('../../assets/logo.webp')} className='w-[100%] ' />
+                <Image src={require('../../assets/logo.png')} className='w-[100%] ' />
             </div>
 
 
@@ -105,7 +105,7 @@ function Navbar() {
 
 
 
-{/* COUNTDOWN TIMER */}
+                {/* COUNTDOWN TIMER */}
                 {/* {authData.logged_in ?
                     <button className="btn btn-ghost btn-circle" onClick={() => document.getElementById('my_modal_5').showModal()}>
                         <div className="indicator">
@@ -150,6 +150,8 @@ function Navbar() {
                 {authData.logged_in ?
                     <>
 
+
+                        
                         <div className="dropdown dropdown-end text-black">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
@@ -159,12 +161,12 @@ function Navbar() {
                             <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                                 <li>
                                     <a className="justify-between">
-                                    <Link href={'/profile'}>
+                                        <Link href={'/profile'}>
                                             Profile
                                         </Link>
                                     </a>
                                 </li>
-                                
+
 
                                 {authData.is_admin ?
 
@@ -178,7 +180,7 @@ function Navbar() {
 
                                 }
 
-<li>
+                                <li>
                                     {/* <a className="justify-between">
                                     <Link href={'/password/change'}>
                                             Change Password

@@ -46,7 +46,7 @@ body{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(/img21.jpg);
+  background-image: url(/img21.png);
   scale: 1;
   transition: 0.8s ;
   transition-timing-function: linear;
@@ -248,7 +248,7 @@ section{
   width: 100%;
 }
 .swiper-slide:nth-child(1){
-  background-image: url(/img21.jpg);
+  background-image: url(/img21.png);
  
   background-position: center;
   background-repeat: no-repeat;
@@ -256,7 +256,7 @@ section{
 }
 
 .swiper-slide:nth-child(2){
-  background-image: url(/img22.jpg);
+  background-image: url(/img22.png);
  
   background-position: center;
   background-repeat: no-repeat;
@@ -264,7 +264,7 @@ section{
 }
 
 .swiper-slide:nth-child(3){
-  background-image: url(/img23.jpg);
+  background-image: url(/img23.png);
  
   background-position: center;
   background-repeat: no-repeat;
