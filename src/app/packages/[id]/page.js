@@ -205,7 +205,7 @@ function Packages({ params }) {
                     <Toaster position="top-right" expand={true} richColors/>
                         <div className="min-h-full lg:w-[100%] md:w-[100%] sm:w-[100%] max-sm:w-[100%]">
                             <form className="hero-content max-sm:w-[100%] flex  items-center lg:flex-row md:flex-col sm:flex-col max-sm:flex-col max-sm:items-center max-sm:justify-center  lg:justify-between">
-                                <img src={imgInfo.url } className=" h-[90%] sm:w-[100%] max-sm:w-[100%] rounded-lg shadow-2xl" />
+                                <img src={imgInfo.url } className=" h-[80%] sm:w-[100%] max-sm:w-[100%] lg:w-[40%] rounded-lg shadow-2xl" />
 
 
                                 <div className='w-[50%] sm:w-[100%] max-sm:w-[100%] bg-base-200 p-20 max-sm:p-10 rounded-lg'>

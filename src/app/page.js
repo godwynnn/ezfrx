@@ -16,8 +16,8 @@ import ReactPlayer from 'react-player'
 import { ReactTyped } from "react-typed";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Navbar from "@/components/headernav";
-import img25 from '../../assets/img25.png'
-import img20 from '../../assets/img20.png'
+import img25 from '../../assets/img25.jpg'
+import img20 from '../../assets/img20.jpg'
 import img27 from '../../assets/img27.png'
 
 
@@ -355,7 +355,7 @@ export default function Home() {
                 className=" lg:text-[20px] md:text-[25px] sm:text-[18px] max-sm:text-[18px] max-sm:text-center font-[400] text-white lg:text-left md:text-center sm:text-center"
                 id="header_text"
                 strings={[
-                  "<p>Transform Your Trading Experience<span className=text-white font-[700]> Simplicity Meets Success!</span> </p>",
+                  "<p>Transform Your Trading Experience<span className=text-white font-[700]> Where Simplicity Meets Success!</span> </p>",
                   "<p>Join the fastest growing global trading platform</p>",
                   "<p>Stay Ahead of the Market with Our Cutting-Edge Trading Signals.</p>",
                 ]}

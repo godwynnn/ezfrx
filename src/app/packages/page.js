@@ -33,11 +33,11 @@ function Packages() {
                
                 console.log('packages:', data)
                 if (data.status === 'success') {
-                    setVideos(data.data)
+                    setPackage(data.data)
                     setLoading(false)
     
                 }else{
-                    setVideos(data.data)
+                    setPackage(data.data)
                     setLoading(false)
                 }
             }
