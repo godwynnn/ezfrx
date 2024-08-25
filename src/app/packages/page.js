@@ -74,13 +74,13 @@ function Packages() {
 
                             :
 
-                            <div className=' lg:p-20 md:p-20 sm:p-20 max-sm:p-5  grid gap-3 lg:grid-cols-4 min-h-[100%] md:grid-cols-2 sm:grid-cols-2 max-sm:grid-cols-1'>
+                            <div className=' lg:p-10 md:p-20 sm:p-20 max-sm:p-5  grid gap-3 lg:grid-cols-4 min-h-[100%] md:grid-cols-2 sm:grid-cols-2 max-sm:grid-cols-1'>
 
 
                             {allPackages.map((val, idx) =>
 
 
-                                <div className="card card-compact lg:w-[100%] md:h-[70vh] md:w-[90%] bg-base-100 shadow-xl" key={val.id} >
+                                <div className="card card-compact lg:w-[100%] lg:h-[100vh] md:h-[70vh] md:w-[90%] bg-base-100 shadow-xl" key={val.id} >
                                     <figure><img src={val.image_meta.secure_url} alt="Shoes" /></figure>
 
                                     <div className="card-body flex   items-center ">
