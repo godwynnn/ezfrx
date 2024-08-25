@@ -64,7 +64,7 @@ export default function Home() {
 
 
 
-    console.log(count)
+    // console.log(count)
 
 
     document.getElementById('bg_header').style.backgroundImage = `url(${bg_images[count]})`
