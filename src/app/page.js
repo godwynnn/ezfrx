@@ -356,8 +356,8 @@ export default function Home() {
                 id="header_text"
                 strings={[
                   "<p>Transform Your Trading Experience<span className=text-white font-[700]> Where Simplicity Meets Success!</span> </p>",
-                  "<p>Join the fastest growing global trading platform</p>",
-                  "<p>Stay Ahead of the Market with Our Cutting-Edge Trading Signals.</p>",
+                  "<p>Join the fastest growing global <span>trading platform</span> </p>",
+                  "<p>Stay Ahead of the Market with Our Cutting-Edge <span>Trading Signals.</span> </p>",
                 ]}
                 typeSpeed={40}
                 startDelay={1000}
