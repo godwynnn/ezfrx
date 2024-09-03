@@ -64,13 +64,13 @@ function Dashboard() {
         autosize: true,
         studiesOverrides: {},
 
-        widgetbar: {
-            watchlist: true,
-            watchlist_settings: {
-                default_symbols: ["BTC-USD"],
-                readonly: true,
-            },
-        },
+        // widgetbar: {
+        //     watchlist: true,
+        //     watchlist_settings: {
+        //         default_symbols: ["BTC-USD"],
+        //         readonly: true,
+        //     },
+        // },
 
         custom_indicators_getter: function (PineJS) {
             return Promise.resolve([

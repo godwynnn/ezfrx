@@ -349,7 +349,7 @@ export default function Home() {
         <section className="h-full absolute top-0 z-50 left-0 max-lg:w-[100%] lg:w-[100%] max-md:w-[40%] md:w-[100%] sm:w-[100%] max-sm:w-[100%] text-white flex flex-col justify-center lg:p-[5%] md:p-[10%] header_caption "  >
 
         <div className="p-2 lg:w-[55%]  md:w-[100%] sm:w-[100%] max-sm:w-[100%] h-[100%] flex flex-col justify-center  ">
-              <p className="text-white p-[0%] lg:text-[60px] md:text-[50px] sm:text-[50px] max-sm:text-[35px]  lg:text-left md:text-center sm:text-center max-sm:text-center">Profitable Trading,Your Trading Ally</p>
+              <p className="text-white p-[0%] lg:text-[60px] md:text-[50px] sm:text-[50px] max-sm:text-[35px]  lg:text-left md:text-center sm:text-center max-sm:text-center">Discover the World’s Markets, Your Profitable <span>Trading Ally</span></p>
               <ReactTyped
                 // startWhenVisible
                 className=" lg:text-[20px] md:text-[25px] sm:text-[18px] max-sm:text-[18px] max-sm:text-center font-[400] text-white lg:text-left md:text-center sm:text-center"

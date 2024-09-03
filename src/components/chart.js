@@ -240,7 +240,7 @@ function Chart(props) {
 
       locale: getLanguageFromURL() || 'en',
       disabled_features: [],
-      enabled_features: ['study_templates', 'pane_context_menu'],
+      enabled_features: [],
       charts_storage_url: props.widget_data.chartsStorageUrl,
       charts_storage_api_version: props.widget_data.chartsStorageApiVersion,
       // client_id: props.widget_data.clientId,
