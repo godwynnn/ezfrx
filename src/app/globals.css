@@ -118,15 +118,16 @@ body{
   font-family: "Nunito Sans", sans-serif;
   font-family: "IBM Plex Sans", sans-serif;
   font-family: "Kanit", sans-serif;
-  /* font-family: "DM Sans", sans-serif; */
-  font-optical-sizing: auto;
+ 
+
   /* font-family: 'Martian Mono'; */
-  font-weight: 400;
+  /* font-weight: 700; */
   font-style: normal;
   /* font-style: italic; */
 }
 .header_caption div p span{
   font-family: "Playwrite CU", cursive;
+   /* font-family: "DM Sans", sans-serif; */
 }
 /* .modebar{
   background-color: red;
