@@ -21,6 +21,7 @@ import '@leenguyen/react-flip-clock-countdown/dist/index.css';
 import {ChartingLibraryWidgetOptions,ResolutionString} from '../../../public/static/charting_library/charting_library'
 import dynamic from 'next/dynamic'
 import '../../../public/static/charting_library/'
+import '../../../public/static/charting_library/charting_library'
 import CustomDatafeed from '../../app/datafeed'
 
 // import Chart from '@/components/chart'
@@ -47,6 +48,8 @@ function Dashboard() {
 
     const chartData = useSelector(state => state.reducer.chartreducer)
     let ticker_symbol=localStorage.getItem('ticker_data')
+
+    console.log('chartData',chartData)
 
 
     const defaultWidgetProps={
@@ -134,6 +137,7 @@ function Dashboard() {
                         }
                     },
                     constructor: function() {
+                        
                         this.main = function(context, input) {
                             this._context = context;
                             this._input = input;
@@ -209,9 +213,9 @@ function Dashboard() {
                     <main className={'bg-[#0B1215] lg:w-[100%] lg:h-[120vh]  max-xl:h-[100vh] lg:overflow-x-hidden md:h-[150vh] md:w-[100%] max-md:h-[100vh] max-md:w-[100%] '}>
 
                         <div className={'flex lg:w-full lg:h-[100%] md:h-full lg:flex-row p-2'}>
-                            {/* <aside className={' lg:flex lg:w-[40%] lg:h-[full] md:h-full p-5 md:hidden sm:hidden max-sm:hidden'}>
+                            <aside className={' lg:flex lg:w-[25%] lg:h-[full] md:h-full p-5 md:hidden sm:hidden max-sm:hidden'}>
                                 <Rates handleGraphChange={handleGraphChange} />
-                            </aside> */}
+                            </aside>
 
                             <div className={'flex lg:flex-row p-0 lg:w-[100%] lg:h-full md:w-[100%] md:h-[100%] sm:w-[100%] sm:h-[100%] max-sm:w-[100%] max-sm:h-[100%]  border-white bg-[#101720] max-md:flex-col max-xl:flex-col md:flex-col'}>
                                 <div className='flex flex-col w-[100%] h-[100%] p-2'>
@@ -237,7 +241,7 @@ function Dashboard() {
                                     <div className='w-[100%] lg:h-[20%] md:h-[40%] sm:h-[50%] max-sm:h-[70%] p-2 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 max-sm:grid-cols-2  place-items-center' >
                                         <Filter />
                                     </div> */}
-                                    <div className='p-5 flex overflow-y-hidden justify-center items-center lg:w-[100%] lg:h-[90%] max-lg:w-[100%] max-lg:h-[70%] md:w-[100%] md:h-[70%] max-md:h-[100%] sm:w-[100%] sm:h-[100%] max-sm:w-[100%] max-sm:h-[100%]  '>
+                                    <div className='p-0 flex overflow-y-hidden justify-center items-center lg:w-[100%] lg:h-[90%] max-lg:w-[100%] max-lg:h-[70%] md:w-[100%] md:h-[70%] max-md:h-[100%] sm:w-[100%] sm:h-[100%] max-sm:w-[100%] max-sm:h-[100%]  '>
 
                                         <Chart graph={graph} widget_data={defaultWidgetProps} />
                                     </div>

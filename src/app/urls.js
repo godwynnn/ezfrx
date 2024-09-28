@@ -6,6 +6,7 @@ export const Urls=()=>{
         login:`${local}/login`,
         signup:`${local}/signup`,
         chart: `${local}/chart`,
+        indicators: `${local}/chart_indicators`,
         ticker:`${local}/ticker`,
         create:`${local}/add_plan`,
         packages:`${local}/get_services`,

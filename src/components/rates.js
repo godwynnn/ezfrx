@@ -39,25 +39,33 @@ function Rates(props) {
   const handleClick = (val) => {
     console.log(val)
     // setTickerSymbol(val)
-    fetchChartData({ ...chartData, ticker: val }, dispatch, console.log('hello', { val }))
+    fetchChartData({ ...chartData, ticker: val }, dispatch)
   }
 
 
-  const handleChange = (val) => {
-    console.log(val.length)
-    if (val.length > 0) {
-      setTickerQuery(val)
+  // const handleChange = (val) => {
+  //   console.log(val.length)
+  //   if (val.length > 0) {
+  //     setTickerQuery(val)
 
-    } else if (val.length == 0) {
-      setTickerQuery('btc')
-    }
-    else {
-      setTickerQuery('btc')
-    }
-    getTickerData()
+  //   } else if (val.length == 0) {
+  //     setTickerQuery('btc')
+  //   }
+  //   else {
+  //     setTickerQuery('btc')
+  //   }
+  //   getTickerData()
 
 
-  }
+  // }
+
+    function getFilterQueryData(e) {
+      const ticker_param = JSON.parse(localStorage.getItem('ticker_param'))
+      fetchChartData({ ...chartData, ticker: ticker_param['ticker'], interval: ticker_param['interval'], start: ticker_param['start'],indicator:e.target.value, end:ticker_param['end']}, dispatch)
+      // dispatch(ChartAction.setQuery({...chartData, symbol:ticker_param['ticker'],interval:ticker_param['interval'],start:ticker_param['start'],end:ticker_param['end']}))
+
+    };
+  
 
 
   // console.log('ticker', chartData.ticker)
@@ -66,8 +74,9 @@ function Rates(props) {
 
 
   useEffect(() => {
+    const ticker_param=JSON.parse(localStorage.getItem('ticker_param'))
 
-    fetchChartData({ ...chartData, ticker: chartData.symbol }, dispatch)
+    // fetchChartData({ ...chartData, ticker_param: ticker_param })
 
     
     getTickerData()
@@ -79,9 +88,14 @@ function Rates(props) {
     <div className={'w-full h-[100%] bg-[#101720] p-5'}>
 
 
-      <select className="select select-bordered w-full max-w-xs align-middle" name='graph' onChange={e=>dispatch(ChartAction.setQuery({...chartData,'indicator':e.target.value}))}>
+      <select className="select select-bordered w-full max-w-xs align-middle" name='graph'  onChange={e=>
+        {
+          // dispatch(ChartAction.setQuery({...chartData, indicator:e.target.value}));
+        getFilterQueryData(e)
+        document.getElementById('my_modal_20').showModal()
+        }}>
         <option disabled selected>Select Indicator</option>
-        <option value='adx'>ADX</option>
+        <option value='adx' >ADX</option>
         <option value='apo'>APO</option>
         <option value='atr'>ATR</option>
         <option value='cci'>CCI</option>
@@ -98,12 +112,12 @@ function Rates(props) {
         <option value='rangeBar'>Range Bar</option>
       </select> */}
 
-      <label className="input input-bordered flex items-center gap-2 mt-5">
+      {/* <label className="input input-bordered flex items-center gap-2 mt-5">
         <input type="text" className={'grow'} placeholder="Search" onChange={e => handleChange(e.target.value)} />
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
-      </label>
+      </label> */}
 
-      <div className=' mt-10 w-[90%] h-[70%] overflow-x-scroll bg-[#0B1215] p-0 relative flex flex-row items-center justify-center '>
+      {/* <div className=' mt-10 w-[90%] h-[70%] overflow-x-scroll bg-[#0B1215] p-0 relative flex flex-row items-center justify-center '>
 
 
         {tickerStatus.loading ?
@@ -129,12 +143,14 @@ function Rates(props) {
             </div>
 
             <div className='min-w-[200%] h-[100%]  bg-[#0B1215] float-right'>
-              {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint optio earum maiores dolor voluptatem dolore voluptate vitae repellat adipisci, assumenda, ab officiis est aut necessitatibus accusamus beatae. Mollitia, officiis placeat. */}
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint optio earum maiores dolor voluptatem dolore voluptate vitae repellat adipisci, assumenda, ab officiis est aut necessitatibus accusamus beatae. Mollitia, officiis placeat.
             </div>
           </>
 
         }
-      </div>
+      </div> */}
+
+
 
 
 

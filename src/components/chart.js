@@ -17,6 +17,8 @@ import { w3cwebsocket as wS3 } from 'websocket';
 import { widget, version } from '../../public/static/charting_library/charting_library';
 import '../../public/static/charting_library/datafeeds/udf/dist/bundle'
 import CustomDatafeed from '../app/datafeed'
+import { makeApiRequest } from '@/app/helpers';
+import { createChart } from 'lightweight-charts';
 
 const ApexCharts = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -43,6 +45,7 @@ function Chart(props) {
   const d = new Date();
   const [tvwidget, setTvwidget] = useState(null)
   const adx_indicators = JSON.parse(localStorage.getItem('adx_indicators'))
+  const selected_indicator=chartData.indicator || 'adx'
   // client=new wS3('');
 
   // const [loading, setLoading] = useState(true);
@@ -179,55 +182,122 @@ function Chart(props) {
 
   };
 
-  function getFilterQueryData() {
-    // console.log(filterQuery)
-    fetchChartData({ ...chartData, ticker: chartData.symbol }, dispatch)
-  };
+  const ticker_param = JSON.parse(localStorage.getItem('ticker_param'))
+  useEffect(()=>{
+    
+    console.log(ticker_param['ticker'])
+    dispatch(ChartAction.setQuery({...chartData, symbol:ticker_param['ticker'],interval:ticker_param['interval'],start:ticker_param['start'],end:ticker_param['end']}))
+  
+  },[props.widget_data.symbol,ticker_param['ticker']])
+
+  console.log(chartData)
+  
+
+  // useLayoutEffect(() => {
+ 
+  //   getFilterQueryData()
+  // },[props.widget_data.symbol,chartData.interval,ticker_param['ticker']])
 
 
 
   // TRADINGVIEW SETUP
   const all_data = {
-    chart_data: [],
-    adx_data: [],
-    apo_data: [],
+    adx: [],
+    apo: [],
+    atr:[],
+    cci:[],
+    ma5:[],
+    ma20:[]
   };
   data.forEach((val, i, arr) => {
 
     return [
-      all_data.chart_data.push({ open: val[1], high: val[2], low: val[3], close: val[4], time: val[0] }),
-      all_data.adx_data.push({ value: val[5], time: val[0] }),
-      all_data.apo_data.push({ value: val[6], time: val[0] })
+      all_data.adx.push({ value: val[5], time: val[0] }),
+      all_data.apo.push({ value: val[6], time: val[0] }),
+      all_data.atr.push({ value: val[7], time: val[0] }),
+      all_data.cci.push({ value: val[8], time: val[0] }),
+      all_data.ma5.push({ value: val[9], time: val[0] }),
+      all_data.ma20.push({ value: val[10], time: val[0] })
+
     ]
 
 
 
   });
 
-  // const adx_data=data.forEach((val, i, arr) => {
-
-  //   return { time: val[0], value:val[5]}
-
-
-
-  // });
-
-
-  // console.log('chart data :', all_data)
-
 
 
   const myPriceFormatter = p => p.toFixed(2);
 
+  useEffect(() => {
+
+    // CANDLE STICKS
+    const chartOptions1 = {
+      layout: { textColor: 'white', background: { type: 'solid', color: 'transparent' } },
+      width: chart_ref1.current.clientWidth, height: chartContainerRef.current.clientHeight 
+    };
+
+
+    const chart = createChart(chart_ref1.current, chartOptions1);
+    chart.timeScale().fitContent();
+    const candlestickSeries = chart.addLineSeries({
+      upColor: '#26a69a', downColor: '#ef5350',
+      borderVisible: true, wickUpColor: '#26a69a',
+      wickDownColor: '#ef5350'
+    });
+    const handleResize = () => {
+      chart.applyOptions({
+        width: chart_ref1.current.clientWidth, height: chartContainerRef.current.clientHeight,
+        localization: {
+          priceFormatter: myPriceFormatter,
+        },
+
+      })
+    };
+
+    console.log(selected_indicator)
+
+
+    candlestickSeries.setData(all_data[selected_indicator]);
+
+    window.addEventListener('resize', handleResize);
+
+
+    return () => {
+      window.addEventListener('resize', handleResize)
+      chart.remove()
+    };
+
+
+    // IndicatorData();
+    // dispatch(ChartAction.setQuery({ loading: true }));
+    // fetchChartData(null,dispatch);
+    // getFilterQueryData();
+
+
+
+    // // Sample adx data
+    // const adxSeries = chart.addLineSeries({ color: 'yellow' });
+
+    // adxSeries.setData(all_data.adx_data);
 
 
 
 
-  // this.tvWidget ;
+
+  }, [selected_indicator])
+
+
+
+
+
+
+
+
 
   useEffect(() => {
 
-    // console.log(props)
+    console.log(CustomDatafeed)
 
     const widgetOptions = {
       symbol: props.widget_data.symbol,
@@ -266,6 +336,8 @@ function Chart(props) {
           readonly: true,
         },
       },
+
+
       custom_indicators_getter: function (PineJS) {
         return Promise.resolve([
           {
@@ -328,51 +400,46 @@ function Chart(props) {
               }
             },
             constructor: function () {
-              this.init = function (context, input) {
+
+              this.init = function (context, inputCallback) {
                 this._context = context;
-                this._input = input;
-                console.log('ADX OUTSIDE CHART ', this._context)
+                this._input = inputCallback;
+                console.log('CONTEXT ', context)
+                // const data = await makeApiRequest(`${url.chart}?ticker=${symbolInfo.ticker}&interval=${resolution.toLowerCase()}&start=${from}&end=${to}`,'GET');
 
-                // this._plot=this._context.new_plot()
-
+                // Define the symbol to be plotted.
+                // Symbol should be a string.
+                // You can use PineJS.Std.ticker(this._context) to get the selected symbol's ticker.
+                // For example,
+                //    var symbol = 'AAPL';
+                //    var symbol = '#EQUITY';
+                //    var symbol = PineJS.Std.ticker(this._context) + '#TEST';
+                const symbol = 'BTC-USD'; // #EQUITY should be replaced with the symbol you want to resolve
+                this._context.new_sym(symbol, PineJS.Std.period(this._context));
               };
+
+
               this.main = function (context, input) {
+
                 this._context = context;
                 this._input = input;
-
-                
 
                 var valueForColor0 = 100;
                 var valueForColor1 = 200;
 
-                const currentBar=context.new_sym(this._context.symbol).close;
-                const time=context.new_sym(this._context.symbol).time;
-
-
-                const indicatorValue=adx_indicators.find(d=>d.time===time)
-
-                if(indicatorValue){
-                  this._context.new_var(PineJS.Std.close(indicatorValue.value))
-                }else{
-                  this._context.new_var(PineJS.Std.close(NaN))
-                }
-
-
                 // perform your calculations here and return one of the constants
                 // that is specified as a key in 'valToIndex' mapping
-                // var result =PineJS.Std.open(this._context)
-                // console.log('INSIDE CHART',this._context)
+                var result =
+                  Math.random() * 100 % 2 > 1 ? // we randomly select one of the color values
+                    valueForColor0 : valueForColor1;
 
-
-
-                // return [result];
+                return [result];
               }
             }
-          },
-
-
+          }
         ]);
       },
+
 
     };
 
@@ -400,23 +467,11 @@ function Chart(props) {
 
         button.innerHTML = 'Check API';
       });
-      widget.chart().createStudy("abcd crypto index", false, true);
-      const watchlistApi = tvWidget.watchList(); // Get the Watchlist API
-      const firstList = watchlistApi.createList("First list"); // Create a new empty list
-      const secondList = watchlistApi.createList("Second list", ["AMZN", "ADBE"]); //
 
-      //       tvWidget.changeTheme('dark').then(() => {
-      //     tvWidget.applyOverrides({
-      //         "paneProperties.background": "black",
-      //         "paneProperties.backgroundType": "solid"
-      //     });
-      // });
+
     })
 
-    if (tvWidget !== null) {
-      tvWidget.remove();
-      tvWidget = null;
-    }
+
 
   }, [])
 
@@ -432,6 +487,17 @@ function Chart(props) {
 
 
       </div>
+
+
+      {/* <input type="checkbox" id="my_modal_20" className="modal-toggle" /> */}
+      <dialog id="my_modal_20" className="modal" >
+        <div className="modal-box w-[100%] max-w-5xl bg-[#0B1215]" ref={chart_ref1} style={{ height: '100%' }}>
+
+          <form method="dialog" className="modal-backdrop">
+            <button>close</button>
+          </form>
+        </div>
+      </dialog>
 
 
 

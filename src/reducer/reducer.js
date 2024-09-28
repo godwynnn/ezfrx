@@ -77,7 +77,9 @@ const chartState = {
     interval: "1m",
     // interval_duration: 15,
     period: "1d",
-    indicator:null
+    indicator:"adx",
+    start:null,
+    end:null
     // period_duration: 1,
     
 }
@@ -96,7 +98,17 @@ const ChartSlice = createSlice({
             state.open = action.payload.open
             state.loading = action.payload.loading
             state.using_post = action.payload.searched_with_post
-            state.indicator=action.payload.indicator
+            state.start=action.payload.start
+            state.end=action.payload.end
+
+            console.log(action.payload)
+            if(action.payload.indicator===undefined||''){
+                state.indicator="adx"
+
+            }else{
+                state.indicator=action.payload.indicator
+
+            }
 
             if (action.payload.symbol===undefined){
                 state.symbol='BTC-USD'

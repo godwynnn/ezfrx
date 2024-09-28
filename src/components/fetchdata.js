@@ -10,14 +10,14 @@ import { Urls } from "@/app/urls"
 const url = Urls()
 export const fetchChartData = async (data, dispatch) => {
 
-
+    // const dispatch=useDispatch()
    
-    console.log('fetching post..')
+    console.log('fetching post..',data)
     dispatch(ChartAction.setQuery({ loading: true }))
 
 
-
-    let res = await fetch(`${url.chart}?ticker=${data.ticker}&interval=${data.interval}&period=${data.period}`, {
+    
+    let res = await fetch(`${url.indicators}?ticker=${data.ticker}&interval=${data.interval}&start=${data.start}&end=${data.end}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -28,8 +28,8 @@ export const fetchChartData = async (data, dispatch) => {
     })
 
 
-    var obj = await res.json()
-    console.log('fetch data', obj)
+    let obj = await res.json()
+    console.log('ALL DATAS',obj)
 
     // APEXCHARTS
     if (obj.status==="success"){
@@ -156,13 +156,13 @@ export const fetchChartData = async (data, dispatch) => {
         }
 
         if (idx === ma5.indexOf(ma5[idx])) {
-            val[9] = parseFloat(ma5[idx][1])
+            val[10] = parseFloat(ma5[idx][1])
             
 
         }
 
         if (idx === ma20.indexOf(ma20[idx])) {
-            val[9] = parseFloat(ma20[idx][1])
+            val[11] = parseFloat(ma20[idx][1])
             
 
         }
@@ -181,7 +181,7 @@ export const fetchChartData = async (data, dispatch) => {
 
     })
     let all_data=all_dates
-    // console.log('dates_holder', all_data)
+    console.log('dates_holder', all_data)
 
 
 
@@ -258,9 +258,10 @@ export const fetchChartData = async (data, dispatch) => {
             interval_duration:data.interval_duration,
             period:data.period,
             period_duration:data.period_duration,
+            indicator:data.indicator
 
         }
-        // console.log(chart_data)
+        console.log(chart_data)
         dispatch(ChartAction.setQuery(chart_data))
 
 

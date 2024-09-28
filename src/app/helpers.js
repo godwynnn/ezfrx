@@ -7,6 +7,7 @@ import { ChartAction } from "@/reducer/reducer"
 const url=Urls()
 // Makes requests to CryptoCompare API
 export async function makeApiRequest(path,q_method) {
+
     try {
         const response = await fetch(path, {
             method: q_method,
@@ -50,7 +51,13 @@ export function resolveGetData(obj){
     const all_closes = Object.entries(obj.prices.close)
     const all_lows = Object.entries(obj.prices.low)
     const all_volumes=Object.entries(obj.prices.volume)
-    const all_adx=Object.entries(obj.prices.adx)
+    const adx = Object.entries(obj.prices.adx)
+    // const apo = Object.entries(obj.prices.apo)
+    // const atr = Object.entries(obj.prices.atr)
+    // const cci = Object.entries(obj.prices.cci)
+    // const ma5 = Object.entries(obj.prices.ma5)
+   
+
 
     const adx_indicators=[]
     
@@ -75,7 +82,7 @@ export function resolveGetData(obj){
             return val
         })
 
-        all_adx.forEach(val => {
+        adx.forEach(val => {
             return val
         })
 
@@ -111,27 +118,30 @@ export function resolveGetData(obj){
 
         }
 
-        if (idx === all_adx.indexOf(all_adx[idx])) {
-            val[7] = parseFloat(all_adx[idx][1])
-            adx_indicators.push({time:val[1],value:parseFloat(all_adx[idx][1])})
+        if (idx === adx.indexOf(adx[idx])) {
+            val[7] = parseFloat(adx[idx][1])
+            // adx_indicators.push({time:val[1],value:parseFloat(adx[idx][1])})
             
 
         }
 
   
         // let obj_data=val.slice(1,val.length)
-        // console.log('hartDta',val)
+        
         val.splice(0,1)
-        // console.log('hartDta',val)
+        
+        
         return val
 
 
 
 
     })
-    console.log('ADX INSDIE CHART ', adx_indicators)
-    window.localStorage.setItem('adx_indicators',JSON.stringify(adx_indicators))
+   
+    // window.localStorage.setItem('adx_indicators',JSON.stringify(adx_indicators))
+    console.log('ADX INSDIE CHART',all_dates)
     let all_data=all_dates
+
     return all_data
 
 }

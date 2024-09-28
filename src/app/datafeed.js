@@ -2,6 +2,7 @@ import { makeApiRequest, parseFullSymbol, generateSymbol,resolveGetData } from "
 import { Urls } from "./urls";
 import { UseSelector, useDispatch, useSelector } from 'react-redux';
 import { useState,useEffect } from "react";
+import { fetchChartData } from "@/components/fetchdata";
 
 // DatafeedConfiguration implementation
 // ...
@@ -12,8 +13,10 @@ import { useState,useEffect } from "react";
 const url = Urls()
 
 
+// TAKE NOTE
 const fetchTicker= ()=>{
     let query=localStorage.getItem('ticker_query')
+    // let ticker_data=localStorage.getItem('ticker_data')
     
      var res
     if(query!=null || query!=''){
@@ -194,8 +197,13 @@ export default {
             
             
             const data = await makeApiRequest(`${url.chart}?ticker=${symbolInfo.ticker}&interval=${resolution.toLowerCase()}&start=${from}&end=${to}`,'GET');
-            
-            console.log(data)
+            // localStorage.setItem('ticker',symbolInfo.ticker)
+            // fetchChartData({'start':from,'end':to,'interval':resolution.toLowerCase(),'ticker':symbolInfo.ticker})
+
+            localStorage.setItem('ticker_param',JSON.stringify({'start':from,'end':to,'interval':resolution.toLowerCase(),'ticker':symbolInfo.ticker}))
+            // localStorage.setItem('end',to)
+            // localStorage.setItem('interval',resolution.toLowerCase())
+            console.log(resolution)
             if (data.loading && data.loading === true || data.length === 0) {
                 // "noData" should be set if there is no data in the requested period
                 onHistoryCallback([], { noData: true });
