@@ -487,6 +487,7 @@ function Chart(props) {
 
 
       </div>
+      
 
 
       {/* <input type="checkbox" id="my_modal_20" className="modal-toggle" /> */}
