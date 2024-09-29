@@ -490,7 +490,22 @@ function Chart(props) {
 
 
       {/* <input type="checkbox" id="my_modal_20" className="modal-toggle" /> */}
+      {chartData.loading?
+
       <dialog id="my_modal_20" className="modal" >
+      <div className="modal-box w-[100%] max-w-5xl bg-[#0B1215] " ref={chart_ref1} style={{ height: '100%' }}>
+        <span className="loading loading-bars text-white loading-lg "></span>
+
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </div>
+      </dialog>
+
+    :
+
+
+    <dialog id="my_modal_20" className="modal" >
         <div className="modal-box w-[100%] max-w-5xl bg-[#0B1215]" ref={chart_ref1} style={{ height: '100%' }}>
 
           <form method="dialog" className="modal-backdrop">
@@ -498,6 +513,9 @@ function Chart(props) {
           </form>
         </div>
       </dialog>
+    
+    }
+      
 
 
 
