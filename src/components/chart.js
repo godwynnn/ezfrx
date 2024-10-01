@@ -1,5 +1,4 @@
 'use client';
-
 // import Plot from 'react-plotly.js';
 import React, { useLayoutEffect } from 'react';
 import dynamic from 'next/dynamic';
