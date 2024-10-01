@@ -180,15 +180,7 @@ function Chart(props) {
 
   };
 
-  const ticker_param = JSON.parse(localStorage.getItem('ticker_param'))
-  useEffect(()=>{
-    
-    console.log(ticker_param['ticker'])
-    dispatch(ChartAction.setQuery({...chartData, symbol:ticker_param['ticker'],interval:ticker_param['interval'],start:ticker_param['start'],end:ticker_param['end']}))
-  
-  },[props.widget_data.symbol,ticker_param['ticker']])
-
-  console.log(chartData)
+ 
   
 
   // useLayoutEffect(() => {

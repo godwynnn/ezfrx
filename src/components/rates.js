@@ -59,12 +59,12 @@ function Rates(props) {
 
   // }
 
-    function getFilterQueryData(e) {
-      const ticker_param = JSON.parse(localStorage.getItem('ticker_param'))
-      fetchChartData({ ...chartData, ticker: ticker_param['ticker'], interval: ticker_param['interval'], start: ticker_param['start'],indicator:e.target.value, end:ticker_param['end']}, dispatch)
-      // dispatch(ChartAction.setQuery({...chartData, symbol:ticker_param['ticker'],interval:ticker_param['interval'],start:ticker_param['start'],end:ticker_param['end']}))
+    // function getFilterQueryData(e) {
+    //   const ticker_param = JSON.parse(localStorage.getItem('ticker_param'))
+    //   fetchChartData({ ...chartData, ticker: ticker_param['ticker'], interval: ticker_param['interval'], start: ticker_param['start'],indicator:e.target.value, end:ticker_param['end']}, dispatch)
+    //   // dispatch(ChartAction.setQuery({...chartData, symbol:ticker_param['ticker'],interval:ticker_param['interval'],start:ticker_param['start'],end:ticker_param['end']}))
 
-    };
+    // };
   
 
 
