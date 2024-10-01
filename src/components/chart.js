@@ -227,63 +227,6 @@ function Chart(props) {
 
   const myPriceFormatter = p => p.toFixed(2);
 
-  // useEffect(() => {
-
-  //   // CANDLE STICKS
-  //   const chartOptions1 = {
-  //     layout: { textColor: 'white', background: { type: 'solid', color: 'transparent' } },
-  //     width: chart_ref1.current.clientWidth, height: chartContainerRef.current.clientHeight 
-  //   };
-
-
-  //   const chart = createChart(chart_ref1.current, chartOptions1);
-  //   chart.timeScale().fitContent();
-  //   const candlestickSeries = chart.addLineSeries({
-  //     upColor: '#26a69a', downColor: '#ef5350',
-  //     borderVisible: true, wickUpColor: '#26a69a',
-  //     wickDownColor: '#ef5350'
-  //   });
-  //   const handleResize = () => {
-  //     chart.applyOptions({
-  //       width: chart_ref1.current.clientWidth, height: chartContainerRef.current.clientHeight,
-  //       localization: {
-  //         priceFormatter: myPriceFormatter,
-  //       },
-
-  //     })
-  //   };
-
-  //   console.log(selected_indicator)
-
-
-  //   candlestickSeries.setData(all_data[selected_indicator]);
-
-  //   window.addEventListener('resize', handleResize);
-
-
-  //   return () => {
-  //     window.addEventListener('resize', handleResize)
-  //     chart.remove()
-  //   };
-
-
-  //   // IndicatorData();
-  //   // dispatch(ChartAction.setQuery({ loading: true }));
-  //   // fetchChartData(null,dispatch);
-  //   // getFilterQueryData();
-
-
-
-  //   // // Sample adx data
-  //   // const adxSeries = chart.addLineSeries({ color: 'yellow' });
-
-  //   // adxSeries.setData(all_data.adx_data);
-
-
-
-
-
-  // }, [selected_indicator])
 
 
 
@@ -486,33 +429,7 @@ function Chart(props) {
       </div>
       
 
-
-      {/* <input type="checkbox" id="my_modal_20" className="modal-toggle" /> */}
-      {/* {chartData.loading?
-
-      <dialog id="my_modal_20" className="modal" >
-      <div className="modal-box w-[100%] max-w-5xl bg-[#0B1215] " ref={chart_ref1} style={{ height: '100%' }}>
-        <span className="loading loading-bars text-white loading-lg "></span>
-
-        <form method="dialog" className="modal-backdrop">
-          <button>close</button>
-        </form>
-      </div>
-      </dialog>
-
-    :
-
-
-    <dialog id="my_modal_20" className="modal" >
-        <div className="modal-box w-[100%] max-w-5xl bg-[#0B1215]" ref={chart_ref1} style={{ height: '100%' }}>
-
-          <form method="dialog" className="modal-backdrop">
-            <button>close</button>
-          </form>
-        </div>
-      </dialog>
-    
-    } */}
+ 
       
 
 
