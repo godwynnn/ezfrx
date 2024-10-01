@@ -536,3 +536,12 @@ custom_indicators_getter: function (PineJS) {
 
 
 
+
+
+
+onChange={e=>
+        {
+          // dispatch(ChartAction.setQuery({...chartData, indicator:e.target.value}));
+        getFilterQueryData(e)
+        document.getElementById('my_modal_20').showModal()
+        }}

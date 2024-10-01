@@ -88,12 +88,7 @@ function Rates(props) {
     <div className={'w-full h-[100%] bg-[#101720] p-5'}>
 
 
-      <select className="select select-bordered w-full max-w-xs align-middle" name='graph'  onChange={e=>
-        {
-          // dispatch(ChartAction.setQuery({...chartData, indicator:e.target.value}));
-        getFilterQueryData(e)
-        document.getElementById('my_modal_20').showModal()
-        }}>
+      <select className="select select-bordered w-full max-w-xs align-middle" name='graph'  >
         <option disabled selected>Select Indicator</option>
         <option value='adx' >ADX</option>
         <option value='apo'>APO</option>
