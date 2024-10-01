@@ -17,7 +17,6 @@ import { widget, version } from '../../public/static/charting_library/charting_l
 import '../../public/static/charting_library/datafeeds/udf/dist/bundle'
 import CustomDatafeed from '../app/datafeed'
 import { makeApiRequest } from '@/app/helpers';
-import { createChart } from 'lightweight-charts';
 
 const ApexCharts = dynamic(() => import("react-apexcharts"), { ssr: false });
 
