@@ -314,7 +314,13 @@ section{
   color: red;
 } */
 
-.t_c{
-  margin-top: 10px;
-  background-color: transparent;
+.highcharts-container{
+  width: 100% ;
+}
+
+.highcharts-root{
+  width: 100% ;
+}
+.highcharts-background{
+  width: 100% !important;
 }

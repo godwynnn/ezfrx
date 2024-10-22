@@ -4,6 +4,7 @@ import { Urls } from '@/app/urls'
 import { fetchChartData } from './fetchdata'
 import { UseDispatch, useDispatch, useSelector } from 'react-redux'
 import { ChartAction } from '@/reducer/reducer'
+import indicator from 'plotly.js/src/traces/indicator'
 const url = Urls()
 
 function Rates(props) {
@@ -65,6 +66,11 @@ function Rates(props) {
     //   // dispatch(ChartAction.setQuery({...chartData, symbol:ticker_param['ticker'],interval:ticker_param['interval'],start:ticker_param['start'],end:ticker_param['end']}))
 
     // };
+
+    function getIndicatorData(e){
+      console.log(e.target.value)
+      dispatch(ChartAction.setQuery({...chartData,indicator:e.target.value}))
+    }
   
 
 
@@ -88,14 +94,18 @@ function Rates(props) {
     <div className={'w-full h-[100%] bg-[#101720] p-5'}>
 
 
-      <select className="select select-bordered w-full max-w-xs align-middle" name='graph'  >
-        <option disabled selected>Select Indicator</option>
-        <option value='adx' >ADX</option>
-        <option value='apo'>APO</option>
-        <option value='atr'>ATR</option>
-        <option value='cci'>CCI</option>
-        <option value='ma5'>MA5</option>
-        <option value='ma20'>MA20</option>
+      <select className="select select-bordered w-full max-w-xs align-middle" name='graph' id="oscillators"  onChange={e=>getIndicatorData(e)} >
+        <option disabled selected >Select Indicator</option>
+        <option value="adx">ADX</option>
+        <option value="apo">Absolute price indicator</option>
+        <option value="ad">A/D (Accumulation/Distribution)</option>
+        <option value="aroon">Aroon</option>
+        <option value="aroonoscillator">Aroon oscillator</option>
+        <option value="atr">ATR (Average True Range)</option>
+        <option value="ao">Awesome oscillator</option>
+        <option value="cci">CCI (Commodity Channel Index)</option>
+        <option value="chaikin">Chaikin</option>
+        <option value="cmf">CMF (Chaikin Money Flow)</option>
       </select>
 
       {/* <select className="select select-bordered w-full max-w-xs align-middle" name='graph' onChange={e=>props.handleGraphChange(e)}>
