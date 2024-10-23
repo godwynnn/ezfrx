@@ -210,7 +210,7 @@ function Dashboard() {
             labels: {
               align: 'right',
               x: -3
-              
+
             },
             title: {
               text: 'OHLC'
@@ -301,6 +301,7 @@ function Dashboard() {
 
     }
     // console.log(options)
+    
     
     
 
