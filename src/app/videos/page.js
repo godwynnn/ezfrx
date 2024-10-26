@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Hero from '../hero'
 import ReactPlayer from 'react-player'
 import { Urls } from '../urls'
-import { UseSelector, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import Link from 'next/link'
 
 
