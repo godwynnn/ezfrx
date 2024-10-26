@@ -85,7 +85,7 @@ function Rates(props) {
     // fetchChartData({ ...chartData, ticker_param: ticker_param })
 
     
-    getTickerData()
+    // getTickerData()
 
   }, [])
 

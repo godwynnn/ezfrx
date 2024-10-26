@@ -297,7 +297,7 @@ section{
   background-size: cover;
   background-repeat: no-repeat;
   
-  /* align-self:flex-end; */
+  /* align-this:flex-end; */
   
 }
 .section_2 div:last-child img{

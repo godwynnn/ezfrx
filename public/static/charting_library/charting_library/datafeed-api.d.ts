@@ -572,7 +572,7 @@ export interface LibrarySymbolInfo {
 	 *
 	 * For example, if the data feed only supports minute resolution, set `intraday_multipliers` to `['1']`.
 	 *
-	 * When the user wants to see 5-minute data, `getBars` will be called with the resolution set to 1 until the library builds all the 5-minute resolution by itself.
+	 * When the user wants to see 5-minute data, `getBars` will be called with the resolution set to 1 until the library builds all the 5-minute resolution by itthis.
 	 * @example (for ex.: "1,5,60") - only these resolutions will be requested, all others will be built using them if possible
 	 * @default []
 	 */
@@ -596,7 +596,7 @@ export interface LibrarySymbolInfo {
 	/**
 	 * It is an array containing resolutions that include seconds (excluding postfix) that the data feed provides.
 	 * E.g., if the data feed supports resolutions such as `["1S", "5S", "15S"]`, but has 1-second bars for some symbols then you should set `seconds_multipliers` of this symbol to `[1]`.
-	 * This will make the library build 5S and 15S resolutions by itself.
+	 * This will make the library build 5S and 15S resolutions by itthis.
 	 */
 	seconds_multipliers?: string[];
 	/**
@@ -623,7 +623,7 @@ export interface LibrarySymbolInfo {
 	/**
 	 * The boolean value showing whether data feed has its own weekly and monthly resolution bars or not.
 	 *
-	 * If `has_weekly_and_monthly` = `false` then the library will build the respective resolutions using daily bars by itself.
+	 * If `has_weekly_and_monthly` = `false` then the library will build the respective resolutions using daily bars by itthis.
 	 * If not, then it will request those bars from the data feed using either the `weekly_multipliers` or `monthly_multipliers` if specified.
 	 * If resolution is not within either list an error will be raised.
 	 * @default false

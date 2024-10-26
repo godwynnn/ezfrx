@@ -375,33 +375,33 @@ function Chart(props) {
 
     };
 
-    let tvWidget = new widget(widgetOptions);
-    setTvwidget(new widget(widgetOptions))
-    console.log(tvwidget)
+    // let tvWidget = new widget(widgetOptions);
+    // setTvwidget(new widget(widgetOptions))
+    // console.log(tvwidget)
 
 
     // tvWidget.changeTheme()
 
 
 
-    tvWidget.onChartReady(async () => {
-      tvWidget.headerReady().then(() => {
-        const button = tvWidget.createButton();
-        button.setAttribute('title', 'Click to show a notification popup');
-        button.classList.add('apply-common-tooltip');
-        button.addEventListener('click', () => tvWidget.showNoticeDialog({
-          title: 'Notification',
-          body: 'TradingView Charting Library API works correctly',
-          callback: () => {
-            console.log('Noticed!');
-          },
-        }));
+    // tvWidget.onChartReady(async () => {
+    //   tvWidget.headerReady().then(() => {
+    //     const button = tvWidget.createButton();
+    //     button.setAttribute('title', 'Click to show a notification popup');
+    //     button.classList.add('apply-common-tooltip');
+    //     button.addEventListener('click', () => tvWidget.showNoticeDialog({
+    //       title: 'Notification',
+    //       body: 'TradingView Charting Library API works correctly',
+    //       callback: () => {
+    //         console.log('Noticed!');
+    //       },
+    //     }));
 
-        button.innerHTML = 'Check API';
-      });
+    //     button.innerHTML = 'Check API';
+    //   });
 
 
-    })
+    // })
 
 
 

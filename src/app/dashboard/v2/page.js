@@ -19,35 +19,31 @@ import { AuthencticationAction } from '@/reducer/reducer'
 import FlipClockCountdown from '@leenguyen/react-flip-clock-countdown'
 import '@leenguyen/react-flip-clock-countdown/dist/index.css';
 import dynamic from 'next/dynamic'
-// import HighchartsReact from 'highcharts-react-official'
+import HighchartsReact from 'highcharts-react-official'
 import Highcharts from "highcharts/highstock";
 import HighchartsExporting from 'highcharts/modules/exporting'
 import patternFill from "highcharts/modules/pattern-fill";
 import highchartsGantt from "highcharts/modules/gantt";
-// Load Highcharts modules
-require('highcharts/indicators/indicators')(Highcharts)
-require('highcharts/indicators/pivot-points')(Highcharts)
-require('highcharts/indicators/macd')(Highcharts)
-require('highcharts/modules/exporting')(Highcharts)
-require('highcharts/modules/map')(Highcharts)
-require('highcharts/indicators/price-channel')(Highcharts);
 
 import dataModule from 'highcharts/modules/data';
 import exportingModule from 'highcharts/modules/exporting';
 import indicators from 'highcharts/indicators/indicators';
 import ema from 'highcharts/indicators/ema';
 import apo from 'highcharts/indicators/apo';
-import { name } from 'plotly.js/lib/bar'
-import HC_drag_panes from "highcharts/modules/drag-panes"
 
 
-dataModule(Highcharts);
-exportingModule(Highcharts);
-indicators(Highcharts);
-ema(Highcharts);
-apo(Highcharts);
-highchartsGantt(Highcharts);
-HC_drag_panes(Highcharts)
+// const Highcharts = dynamic(() => import('highcharts/highstock'), {
+//     ssr: false
+// });
+
+// const HighchartsReact = dynamic(() => import('highcharts-react-official'), {
+//     ssr: false
+// });
+
+
+
+
+// HC_drag_panes(Highcharts)
 // import Chart from '@/components/chart'
 
 
@@ -57,21 +53,31 @@ HC_drag_panes(Highcharts)
 //       import("@/components/chart").then((mod) => mod.Chart),
 //     { ssr: false }
 //   );
-// const Highcharts = dynamic(() => import('highcharts/highstock'), {
-//     ssr: false
-//   });
+
+
+if (typeof window !== undefined) {
+    HighchartsExporting(Highcharts)
+
+    indicators(Highcharts);
+    
   
-  const HighchartsReact = dynamic(() => import('highcharts-react-official'), {
-    ssr: false
-  });
 
+    // Load Highcharts modules
+    require('highcharts/indicators/indicators')(Highcharts)
+    
+    require('highcharts/indicators/macd')(Highcharts)
+   
+    require('highcharts/indicators/price-channel')(Highcharts);
 
-  // Load Highcharts modules
-
+}
 
 
 const url = Urls()
 function Dashboard() {
+
+    // Load Highcharts modules
+
+    
 
     const router = useRouter()
     const [graph, setGraph] = useState('candlestick')
@@ -93,9 +99,6 @@ function Dashboard() {
 
 
 
-    if (typeof Highcharts === 'object') {
-        HighchartsExporting(Highcharts)
-    }
 
     const getSubscriptionData = () => {
         fetch(`${url.subscription_data}`, {
@@ -130,9 +133,9 @@ function Dashboard() {
             'https://demo-live-data.highcharts.com/aapl-ohlcv.json'
         ).then(response => response.json());
         // split the data set into ohlc and volume
-        const ohlc = [],
-            volume = [],
-            dataLength = data.length;
+        const ohlc = []
+        const    volume = []
+        const dataLength = data.length;
 
         for (let i = 0; i < dataLength; i += 1) {
             ohlc.push([
@@ -160,7 +163,7 @@ function Dashboard() {
 
 
     useLayoutEffect(() => {
-        
+
         fetchHighchartData()
 
         const handleResize = () => {
@@ -168,74 +171,74 @@ function Dashboard() {
             if (ChartContainer.current) {
                 ChartContainer.current.chart.reflow();
             }
-          };
-      
-          window.addEventListener('resize', handleResize);
-          
-          return () => window.removeEventListener('resize', handleResize);
-       
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+
 
     }, [])
 
     const options = {
-        chart:{
-           height:'600',
+        chart: {
+            height: '600',
             // backgroundColor: 'transparent', // Change background color of the chart
-            color:'white',
-            padding:'20',
+            color: 'white',
+            padding: '20',
         },
 
         responsive: {
             rules: [{
-              condition: {
-                maxWidth: 500
-              },
-              chartOptions: {
-                legend: {
-                  enabled: false
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        enabled: false
+                    }
                 }
-              }
             }]
-          },
-      
-           
+        },
+
+
         title: {
             text: 'My chart',
-            
+
         },
 
         yAxis: [{
             height: '75%',
-            width:'100%',
+            width: '100%',
             labels: {
-              align: 'right',
-              x: -3
+                align: 'right',
+                x: -3
 
             },
             title: {
-              text: 'OHLC'
+                text: 'OHLC'
             }
-          }, {
+        }, {
             top: '75%',
             height: '25%',
             labels: {
-              align: 'right',
-              x: -3
+                align: 'right',
+                x: -3
             },
             offset: 0,
             title: {
-              text: 'MACD'
+                text: 'MACD'
             }
-          }],
-          
-        
+        }],
+
+
 
         series: [{
-            type:'candlestick',
+            type: 'candlestick',
             id: 'aapl',
             name: 'AAPL',
             data: TestchartData.data,
-            
+
         },
         {
             type: 'pc',
@@ -243,6 +246,7 @@ function Dashboard() {
             linkedTo: 'aapl',
             yAxis: 0,
             data: TestchartData.data_volume,
+            name: "adx"
         },
         // {
         //     type: "column",
@@ -251,38 +255,38 @@ function Dashboard() {
         //     id: 'volume',
         //     yAxis: 1,
         //     data: TestchartData.data_volume,
-        
+
         // },
-        
+
         {
             type: "macd",
-            name:'Volume',
-           
+            name: 'Volume',
+
             linkedTo: 'aapl',
             id: 'oscillator',
             yAxis: 1,
             data: TestchartData.data_volume,
-        
+
         }
         ],
-        rangeSelector:{
-            buttons:[
+        rangeSelector: {
+            buttons: [
                 {
-                    type:'month',
-                    count:1,
-                    text:'1mo',
-                    events:{
-                        click:function(obj){
+                    type: 'month',
+                    count: 1,
+                    text: '1mo',
+                    events: {
+                        click: function (obj) {
                             console.log(this)
                         }
                     }
                 },
                 {
-                    type:'month',
-                    count:3,
-                    text:'3mo',
-                    events:{
-                        click:function(obj){
+                    type: 'month',
+                    count: 3,
+                    text: '3mo',
+                    events: {
+                        click: function (obj) {
                             console.log(this)
                         }
                     }
@@ -291,21 +295,21 @@ function Dashboard() {
         },
         plotOptions: {
             candlestick: {
-              color: '#A03C3C', // Color for bearish candles
-              upColor: '#338546', // Color for bullish candles
-              lineColor: '#000000', // Border color for candlesticks
-              upLineColor: '#000000', // Border color for bullish candlesticks
+                color: '#A03C3C', // Color for bearish candles
+                upColor: '#338546', // Color for bullish candles
+                lineColor: '#000000', // Border color for candlesticks
+                upLineColor: '#000000', // Border color for bullish candlesticks
             },
-          },
+        },
 
 
     }
     // console.log(options)
-    
-    
-    
 
-    const fetchOscillatorData=(chart)=>{
+
+
+
+    const fetchOscillatorData = (chart) => {
         const series = chart.get('overlay');
         console.log(series)
     }
@@ -326,9 +330,9 @@ function Dashboard() {
     }, [])
 
 
-    useEffect(()=>{
-        
-    },[])
+    useEffect(() => {
+
+    }, [])
 
 
 
@@ -367,25 +371,23 @@ function Dashboard() {
                                     <div className='w-[100%] lg:h-[20%] md:h-[40%] sm:h-[50%] max-sm:h-[70%] p-2 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 max-sm:grid-cols-2  place-items-center' >
                                         <Filter />
                                     </div> */}
-                                    <div   className='p-0 flex overflow-y-hidden justify-center items-center lg:w-[100%] lg:h-[90%] max-lg:w-[100%] max-lg:h-[70%] md:w-[100%] md:h-[70%] max-md:h-[100%] sm:w-[100%] sm:h-[100%] max-sm:w-[100%] max-sm:h-[100%]  '>
-                                       
+                                    <div className='p-0 flex overflow-y-hidden justify-center items-center lg:w-[100%] lg:h-[90%] max-lg:w-[100%] max-lg:h-[70%] md:w-[100%] md:h-[70%] max-md:h-[100%] sm:w-[100%] sm:h-[100%] max-sm:w-[100%] max-sm:h-[100%]  '>
+
                                         {TestchartData.show_data ?
-                                        
+
                                             <HighchartsReact
-                                                highcharts={ Highcharts }
+                                                highcharts={Highcharts}
                                                 options={options}
                                                 constructorType={'stockChart'}
                                                 containerProps={{ style: { width: "100%" } }}
-                                               
-                                                callback={ fetchOscillatorData }
                                                 ref={ChartContainer}
-                                                
+
                                             />
-                                            
+
                                             :
                                             <span className="loading loading-bars text-white loading-lg"></span>
 
-                                            
+
                                         }
 
 
